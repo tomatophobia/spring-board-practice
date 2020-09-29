@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.board.boardMapper">
+
+	<select id="getBoardCnt" parameterType="com.spring.board.form.BoardForm" resultType="int">
+	
+		SELECT COUNT(*)
+		FROM TB_BOARD
+	
+	</select>
+	
+	<select id="getBoardList" parameterType="com.spring.board.form.BoardForm" resultType="com.spring.board.dto.BoardDto">
+	
+		SELECT *
+		FROM ( SELECT BOARD_SEQ 
+					, BOARD_WRITER 
+					, BOARD_SUBJECT 
+					, BOARD_CONTENT 
+					, CAST( DATE_FORMAT( INS_DATE, '%Y-%m-%d %H:%i:%s' ) AS CHAR(19) ) AS INS_DATE
+					, CAST( DATE_FORMAT( UPD_DATE, '%Y-%m-%d %H:%i:%s' ) AS CHAR(19) ) AS UPD_DATE  
+			   FROM TB_BOARD
+		       ORDER BY BOARD_SEQ DESC
+			  ) T1
+		LIMIT #{limit} OFFSET #{offset}
+	
+	</select>
+	
+	<select id="getBoardDetail" parameterType="com.spring.board.form.BoardForm" resultType="com.spring.board.dto.BoardDto">
+	
+		SELECT BOARD_SEQ 
+			 , BOARD_WRITER 
+			 , BOARD_SUBJECT 
+			 , BOARD_CONTENT 
+			 , CAST( DATE_FORMAT( INS_DATE, '%Y-%m-%d %H:%i:%s' ) AS CHAR(19) ) AS INS_DATE
+			 , CAST( DATE_FORMAT( UPD_DATE, '%Y-%m-%d %H:%i:%s' ) AS CHAR(19) ) AS UPD_DATE  
+		FROM TB_BOARD
+		WHERE BOARD_SEQ = #{board_seq}
+	
+	</select>
+		
+	<insert id="insertBoard" parameterType="com.spring.board.form.BoardForm">
+			
+		<selectKey resultType="int" keyProperty="board_seq" order="BEFORE">
+			
+			SELECT IFNULL(MAX(BOARD_SEQ), 0) + 1 
+			FROM TB_BOARD
+			  
+		</selectKey>
+		
+		INSERT 
+		INTO TB_BOARD 
+		(
+			BOARD_SEQ
+		  	, BOARD_WRITER
+		  	, BOARD_SUBJECT
+		  	, BOARD_CONTENT
+		  	, INS_DATE
+		  	, UPD_DATE
+		) 
+		VALUES 
+		(
+			#{board_seq}
+			, #{board_writer}
+			, #{board_subject}
+			, #{board_content}
+			, NOW() 
+			, NOW() 
+		)
+	
+	</insert>
+	
+	<delete id="deleteBoard" parameterType="com.spring.board.form.BoardForm">
+	
+		DELETE 
+		FROM TB_BOARD 
+		WHERE BOARD_SEQ = #{board_seq}
+	
+	</delete>
+	
+	<update id="updateBoard" parameterType="com.spring.board.form.BoardForm">
+	
+		UPDATE TB_BOARD 
+		   SET BOARD_SUBJECT = #{board_subject}
+		     , BOARD_CONTENT = #{board_content}
+		     , UPD_DATE = NOW()
+ 		WHERE BOARD_SEQ = #{board_seq}
+	
+	</update>
+	
+	
+</mapper>
+
+
