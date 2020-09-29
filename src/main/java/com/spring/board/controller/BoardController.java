@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.board.common.ResultUtil;
 import com.spring.board.dto.BoardDto;
-import com.spring.board.form.BoardForm;
 import com.spring.board.service.BoardService;
 
 @Controller
@@ -30,7 +29,7 @@ public class BoardController {
 	/** 게시판 - 목록 조회 */
 	@RequestMapping(value = "/getBoardList")
 	@ResponseBody
-	public ResultUtil getBoardList(HttpServletRequest request, HttpServletResponse response, BoardForm boardForm) throws Exception {
+	public ResultUtil getBoardList(HttpServletRequest request, HttpServletResponse response, BoardDto boardForm) throws Exception {
 
 		ResultUtil resultUtils = boardService.getBoardList(boardForm);
 
@@ -47,7 +46,7 @@ public class BoardController {
 	/** 게시판 - 상세 조회 */
 	@RequestMapping(value = "/getBoardDetail")
 	@ResponseBody
-	public BoardDto getBoardDetail(HttpServletRequest request, HttpServletResponse response, BoardForm boardForm) throws Exception {
+	public BoardDto getBoardDetail(HttpServletRequest request, HttpServletResponse response, BoardDto boardForm) throws Exception {
 
 		BoardDto boardDto = boardService.getBoardDetail(boardForm);
 
@@ -64,7 +63,7 @@ public class BoardController {
 	/** 게시판 - 등록 */
 	@RequestMapping(value = "/insertBoard")
 	@ResponseBody
-	public BoardDto insertBoard(HttpServletRequest request, HttpServletResponse response, BoardForm boardForm) throws Exception {
+	public BoardDto insertBoard(HttpServletRequest request, HttpServletResponse response, BoardDto boardForm) throws Exception {
 
 		BoardDto boardDto = boardService.insertBoard(boardForm);
 
@@ -74,7 +73,7 @@ public class BoardController {
 	/** 게시판 - 삭제 */
 	@RequestMapping(value = "/deleteBoard")
 	@ResponseBody
-	public BoardDto deleteBoard(HttpServletRequest request, HttpServletResponse response, BoardForm boardForm) throws Exception {
+	public BoardDto deleteBoard(HttpServletRequest request, HttpServletResponse response, BoardDto boardForm) throws Exception {
 
 		BoardDto boardDto = boardService.deleteBoard(boardForm);
 
@@ -91,7 +90,7 @@ public class BoardController {
 	/** 게시판 - 수정 */
 	@RequestMapping(value = "/updateBoard")
 	@ResponseBody
-	public BoardDto updateBoard(HttpServletRequest request, HttpServletResponse response, BoardForm boardForm) throws Exception {
+	public BoardDto updateBoard(HttpServletRequest request, HttpServletResponse response, BoardDto boardForm) throws Exception {
 
 		BoardDto boardDto = boardService.updateBoard(boardForm);
 

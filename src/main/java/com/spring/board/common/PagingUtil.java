@@ -1,14 +1,13 @@
 package com.spring.board.common;
 
 import com.spring.board.dto.CommonDto;
-import com.spring.board.form.CommonForm;
 
 /**
  * 페이지 네비게이션 정보 설정을 위한 클래스
  */
 public class PagingUtil {
 
-	public static CommonDto setPageUtil(CommonForm commonForm) {
+	public static CommonDto setPageUtil(CommonDto commonForm) {
 
 		CommonDto commonDto = new CommonDto();
 
@@ -17,7 +16,7 @@ public class PagingUtil {
 		int currentPage = commonForm.getCurrent_page_no(); // 현재 페이지 번호
 		int countPerList = commonForm.getCount_per_list(); // 한 화면에 출력될 게시물 수
 		int countPerPage = commonForm.getCount_per_page(); // 한 화면에 출력될 페이지 수
-		int totalListCount = commonForm.getTatal_list_count(); // 총 게시물 수
+		int totalListCount = commonForm.getTotal_list_count(); // 총 게시물 수
 		int totalPageCount = totalListCount / countPerList; // 총 페이지 수
 		if (totalListCount % countPerList > 0) { // 총 페이수를 구할 때 int형으로 계산하면 나머지가 있는 경우 게시물이 존재하기 때문에 총 페이지의 수를 수정
 			totalPageCount = totalPageCount + 1;

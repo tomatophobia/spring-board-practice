@@ -3,14 +3,14 @@
 
 <mapper namespace="com.spring.board.boardMapper">
 
-	<select id="getBoardCnt" parameterType="com.spring.board.form.BoardForm" resultType="int">
+	<select id="getBoardCnt" resultType="int">
 	
 		SELECT COUNT(*)
 		FROM TB_BOARD
 	
 	</select>
 	
-	<select id="getBoardList" parameterType="com.spring.board.form.BoardForm" resultType="com.spring.board.dto.BoardDto">
+	<select id="getBoardList" parameterType="com.spring.board.dto.BoardDto" resultType="com.spring.board.dto.BoardDto">
 	
 		SELECT *
 		FROM ( SELECT BOARD_SEQ 
@@ -26,7 +26,7 @@
 	
 	</select>
 	
-	<select id="getBoardDetail" parameterType="com.spring.board.form.BoardForm" resultType="com.spring.board.dto.BoardDto">
+	<select id="getBoardDetail" parameterType="com.spring.board.dto.BoardDto" resultType="com.spring.board.dto.BoardDto">
 	
 		SELECT BOARD_SEQ 
 			 , BOARD_WRITER 
@@ -39,7 +39,7 @@
 	
 	</select>
 		
-	<insert id="insertBoard" parameterType="com.spring.board.form.BoardForm">
+	<insert id="insertBoard" parameterType="com.spring.board.dto.BoardDto">
 			
 		<selectKey resultType="int" keyProperty="board_seq" order="BEFORE">
 			
@@ -70,7 +70,7 @@
 	
 	</insert>
 	
-	<delete id="deleteBoard" parameterType="com.spring.board.form.BoardForm">
+	<delete id="deleteBoard" parameterType="com.spring.board.dto.BoardDto">
 	
 		DELETE 
 		FROM TB_BOARD 
@@ -78,7 +78,7 @@
 	
 	</delete>
 	
-	<update id="updateBoard" parameterType="com.spring.board.form.BoardForm">
+	<update id="updateBoard" parameterType="com.spring.board.dto.BoardDto">
 	
 		UPDATE TB_BOARD 
 		   SET BOARD_SUBJECT = #{board_subject}

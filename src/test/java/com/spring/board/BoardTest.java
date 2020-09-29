@@ -11,7 +11,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.spring.board.dto.BoardDto;
-import com.spring.board.form.BoardForm;
 import com.spring.board.service.BoardService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -26,7 +25,7 @@ public class BoardTest {
 	@Test
 	public void test() {
 
-		BoardForm boardForm = new BoardForm();
+		BoardDto boardForm = new BoardDto();
 
 		try {
 
