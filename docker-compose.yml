@@ -3,7 +3,7 @@ version: '3.3'
 services:
   db:
     image: mysql:5.7
-    container_name: mysql-5.7
+    container_name: mysql
     volumes:
       - "db-data:/var/lib/mysql"
       - "./init/:/docker-entrypoint-initdb.d"
