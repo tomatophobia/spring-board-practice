@@ -4,6 +4,8 @@
 .project
 .settings
 .springBeans
+.idea
 target
 bin
+board.iml
 
