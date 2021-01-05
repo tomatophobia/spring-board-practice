@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "/sample")
 public class SampleController {
 
-	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+  protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	@RequestMapping(value = "/getSample")
-	public void getSample(HttpServletRequest request, HttpServletResponse reponse) throws Exception {
-		logger.debug("================== getSample ==================");
-	}
+  @RequestMapping(value = "/getSample")
+  public void getSample(HttpServletRequest request, HttpServletResponse reponse) throws Exception {
+    logger.debug("================== getSample ==================");
+  }
 }

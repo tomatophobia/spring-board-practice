@@ -16,85 +16,103 @@ import com.spring.board.service.BoardService;
 @RequestMapping(value = "/board")
 public class BoardController {
 
-	@Autowired
-	private BoardService boardService;
+  @Autowired
+  private BoardService boardService;
 
-	/** 게시판 - 목록 페이지 이동 */
-	@RequestMapping(value = "/boardList")
-	public String boardList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+  /**
+   * 게시판 - 목록 페이지 이동
+   */
+  @RequestMapping(value = "/boardList")
+  public String boardList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		return "board/boardList";
-	}
+    return "board/boardList";
+  }
 
-	/** 게시판 - 목록 조회 */
-	@RequestMapping(value = "/getBoardList")
-	@ResponseBody
-	public ResultUtil getBoardList(HttpServletRequest request, HttpServletResponse response, BoardDto boardForm) throws Exception {
+  /**
+   * 게시판 - 목록 조회
+   */
+  @RequestMapping(value = "/getBoardList")
+  @ResponseBody
+  public ResultUtil getBoardList(HttpServletRequest request, HttpServletResponse response, BoardDto boardForm) throws Exception {
 
-		ResultUtil resultUtils = boardService.getBoardList(boardForm);
+    ResultUtil resultUtils = boardService.getBoardList(boardForm);
 
-		return resultUtils;
-	}
+    return resultUtils;
+  }
 
-	/** 게시판 - 상세 페이지 이동 */
-	@RequestMapping(value = "/boardDetail")
-	public String boardDetail(HttpServletRequest request, HttpServletResponse response) throws Exception {
+  /**
+   * 게시판 - 상세 페이지 이동
+   */
+  @RequestMapping(value = "/boardDetail")
+  public String boardDetail(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		return "board/boardDetail";
-	}
+    return "board/boardDetail";
+  }
 
-	/** 게시판 - 상세 조회 */
-	@RequestMapping(value = "/getBoardDetail")
-	@ResponseBody
-	public BoardDto getBoardDetail(HttpServletRequest request, HttpServletResponse response, BoardDto boardForm) throws Exception {
+  /**
+   * 게시판 - 상세 조회
+   */
+  @RequestMapping(value = "/getBoardDetail")
+  @ResponseBody
+  public BoardDto getBoardDetail(HttpServletRequest request, HttpServletResponse response, BoardDto boardForm) throws Exception {
 
-		BoardDto boardDto = boardService.getBoardDetail(boardForm);
+    BoardDto boardDto = boardService.getBoardDetail(boardForm);
 
-		return boardDto;
-	}
+    return boardDto;
+  }
 
-	/** 게시판 - 작성 페이지 이동 */
-	@RequestMapping(value = "/boardWrite")
-	public String boardWrite(HttpServletRequest request, HttpServletResponse response) throws Exception {
+  /**
+   * 게시판 - 작성 페이지 이동
+   */
+  @RequestMapping(value = "/boardWrite")
+  public String boardWrite(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		return "board/boardWrite";
-	}
+    return "board/boardWrite";
+  }
 
-	/** 게시판 - 등록 */
-	@RequestMapping(value = "/insertBoard")
-	@ResponseBody
-	public BoardDto insertBoard(HttpServletRequest request, HttpServletResponse response, BoardDto boardForm) throws Exception {
+  /**
+   * 게시판 - 등록
+   */
+  @RequestMapping(value = "/insertBoard")
+  @ResponseBody
+  public BoardDto insertBoard(HttpServletRequest request, HttpServletResponse response, BoardDto boardForm) throws Exception {
 
-		BoardDto boardDto = boardService.insertBoard(boardForm);
+    BoardDto boardDto = boardService.insertBoard(boardForm);
 
-		return boardDto;
-	}
+    return boardDto;
+  }
 
-	/** 게시판 - 삭제 */
-	@RequestMapping(value = "/deleteBoard")
-	@ResponseBody
-	public BoardDto deleteBoard(HttpServletRequest request, HttpServletResponse response, BoardDto boardForm) throws Exception {
+  /**
+   * 게시판 - 삭제
+   */
+  @RequestMapping(value = "/deleteBoard")
+  @ResponseBody
+  public BoardDto deleteBoard(HttpServletRequest request, HttpServletResponse response, BoardDto boardForm) throws Exception {
 
-		BoardDto boardDto = boardService.deleteBoard(boardForm);
+    BoardDto boardDto = boardService.deleteBoard(boardForm);
 
-		return boardDto;
-	}
+    return boardDto;
+  }
 
-	/** 게시판 - 수정 페이지 이동 */
-	@RequestMapping(value = "/boardUpdate")
-	public String boardUpdate(HttpServletRequest request, HttpServletResponse response) throws Exception {
+  /**
+   * 게시판 - 수정 페이지 이동
+   */
+  @RequestMapping(value = "/boardUpdate")
+  public String boardUpdate(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		return "board/boardUpdate";
-	}
+    return "board/boardUpdate";
+  }
 
-	/** 게시판 - 수정 */
-	@RequestMapping(value = "/updateBoard")
-	@ResponseBody
-	public BoardDto updateBoard(HttpServletRequest request, HttpServletResponse response, BoardDto boardForm) throws Exception {
+  /**
+   * 게시판 - 수정
+   */
+  @RequestMapping(value = "/updateBoard")
+  @ResponseBody
+  public BoardDto updateBoard(HttpServletRequest request, HttpServletResponse response, BoardDto boardForm) throws Exception {
 
-		BoardDto boardDto = boardService.updateBoard(boardForm);
+    BoardDto boardDto = boardService.updateBoard(boardForm);
 
-		return boardDto;
-	}
-	
+    return boardDto;
+  }
+
 }
