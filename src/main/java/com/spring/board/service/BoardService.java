@@ -43,6 +43,7 @@ public class BoardService {
 
     List<BoardDto> list = boardDao.getBoardList(boardForm);
 
+
     HashMap<String, Object> resultMap = new HashMap<String, Object>();
     resultMap.put("list", list);
     resultMap.put("totalCount", totalCount);

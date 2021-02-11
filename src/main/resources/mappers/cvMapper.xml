@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.board.cvMapper">
+
+    <select id="getUser" resultType="com.spring.board.dto.UserDto">
+        SELECT seq
+            ,  name
+        From user
+        Limit 1
+    </select>
+
+    <insert id="registerUser" parameterType="com.spring.board.dto.UserDto">
+        <selectKey resultType="int" keyProperty="seq" order="BEFORE">
+            SELECT IFNULL(MAX(SEQ),0)+1
+            FROM user
+        </selectKey>
+
+        INSERT
+        INTO user(
+            seq
+           , name
+        )
+        values(
+            #{seq}
+            , #{name}
+        )
+    </insert>
+
+    <delete id="deleteUser" parameterType="com.spring.board.dto.UserDto">
+        delete
+        from user
+    </delete>
+
+    <select id="getEducation" parameterType="com.spring.board.dto.EducationDto" resultType="com.spring.board.dto.EducationDto">
+        SELECT seq
+            ,  startdate
+            ,  enddate
+            ,  institute
+            ,  major
+            ,  gpa
+            ,  etc
+        From education
+    </select>
+
+    <insert id="insertEducation" parameterType="com.spring.board.dto.EducationDto">
+        <selectKey resultType="int" keyProperty="seq" order="BEFORE">
+            SELECT IFNULL(MAX(SEQ),0)+1
+            FROM education
+        </selectKey>
+
+        INSERT
+        INTO education(
+            seq
+        ,  startdate
+        ,  enddate
+        ,  institute
+        ,  major
+        ,  gpa
+        ,  etc
+        )
+        values(
+            #{seq}
+        ,  #{startdate}
+        ,  #{enddate}
+        ,  #{institute}
+        ,  #{major}
+        ,  #{gpa}
+        ,  #{etc}
+        )
+
+    </insert>
+
+    <delete id="deleteEducation" parameterType="com.spring.board.dto.EducationDto">
+        delete
+        from education
+        where seq=#{seq}
+    </delete>
+
+    <select id="getAchievements" parameterType="com.spring.board.dto.AchievementsDto" resultType="com.spring.board.dto.AchievementsDto">
+        SELECT seq
+             ,  award
+             ,  awardinfo
+             ,  club
+             ,  clubinfo
+             ,  certification
+             ,  certificationinfo
+        From achievements
+    </select>
+
+    <insert id="insertAchievements" parameterType="com.spring.board.dto.AchievementsDto">
+        <selectKey resultType="int" keyProperty="seq" order="BEFORE">
+            SELECT IFNULL(MAX(SEQ),0)+1
+            FROM education
+        </selectKey>
+
+        INSERT
+        INTO achievements(
+        seq
+        ,  award
+        ,  awardinfo
+        ,  club
+        ,  clubinfo
+        ,  certification
+        ,  certificationinfo
+        )
+        values(
+        #{seq}
+        ,  #{award}
+        ,  #{awardinfo}
+        ,  #{club}
+        ,  #{clubinfo}
+        ,  #{certification}
+        ,  #{certificationinfo}
+        )
+
+    </insert>
+    <delete id="deleteAchievements" parameterType="com.spring.board.dto.AchievementsDto">
+        delete
+        from achievements
+        where seq=#{seq}
+    </delete>
+</mapper>
